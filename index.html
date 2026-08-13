@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ADM Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f1f5f9;
+    --bg-gradient: linear-gradient(135deg, #eef2ff 0%, #f8fafc 50%, #ecfeff 100%);
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --text: #0f172a;
+    --muted: #64748b;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-soft: #eef2ff;
+    --accent: #06b6d4;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,.06);
+    --shadow-md: 0 4px 12px rgba(15,23,42,.08), 0 2px 4px rgba(15,23,42,.04);
+    --shadow-lg: 0 20px 40px -12px rgba(15,23,42,.15), 0 8px 16px -8px rgba(15,23,42,.08);
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 72px 24px 48px; }
+  .hero { text-align: center; margin-bottom: 56px; }
+  .eyebrow {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -.03em;
+    margin: 0 0 14px;
+    background: linear-gradient(135deg, #0f172a 0%, #4f46e5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-md);
+    transition: transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s, border-color .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute; inset: 0 0 auto 0; height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    opacity: 0; transition: opacity .25s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-strong);
+  }
+  .card:hover::before { opacity: 1; }
+  .icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-soft), #cffafe);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+  .card h2 { font-size: 1.25rem; margin: 0 0 8px; font-weight: 700; letter-spacing: -.01em; }
+  .card p { color: var(--muted); font-size: .94rem; margin: 0 0 24px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--primary); color: #fff !important;
+    padding: 11px 20px; border-radius: 10px;
+    text-decoration: none; font-weight: 600; font-size: .9rem;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    box-shadow: 0 2px 6px rgba(79,70,229,.25);
+  }
+  .btn:hover { background: var(--primary-hover); transform: translateX(2px); box-shadow: 0 4px 12px rgba(79,70,229,.35); }
+  .btn .arrow { transition: transform .2s; }
+  .btn:hover .arrow { transform: translateX(3px); }
+  footer { margin-top: 64px; text-align: center; color: var(--muted); font-size: .82rem; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <span class="eyebrow">SAP · ADM</span>
+      <h1>Advance Data Migration Tools</h1>
+      <p class="sub">A suite of internal utilities to plan, estimate, and explore data migration workstreams with clarity.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🔗</div>
+        <h2>Effort Estimation Calculator</h2>
+        <p>Estimate Build, Admin, and Data Load effort by selecting workstreams and data objects from an Excel workbook.</p>
+        <a class="btn" href="effort-estimator.html">Open Estimator <span class="arrow">→</span></a>
+      </div>
+      <div class="card">
+        <div class="icon">🕸️</div>
+        <h2>Dependency Explorer</h2>
+        <p>Explore migration object dependencies from an Excel file with an interactive, filterable graph.</p>
+        <a class="btn" href="dependency-explorer.html">Open Explorer <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <footer>© AstraZeneca · Internal ADM Tools</footer>
+  </div>
+</body>
+</html>
